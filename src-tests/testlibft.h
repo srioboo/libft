@@ -1,8 +1,8 @@
 #ifndef TESTLIBFT_H
 # define TESTLIBFT_H
 
-# include "../include/testlib.h"
-# include "../lib/libft.h"
+# include "../tests/include/testlib.h"
+# include "../src/libft.h"
 
 // libft test functions
 void	test_ft_isalpha(void);
