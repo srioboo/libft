@@ -1,0 +1,46 @@
+# Library name, compiler and flags for compilation
+NAME=libft.a
+CC=cc
+CFLAGS=-Wall -Werror -Wextra
+
+# Get all .c source files to compile
+SRC_DIR=src
+CFILES=$(wildcard $(SRC_DIR)/*.c)
+
+# Substitute files extesions .c for .o
+OFILES=$(patsubst %.c,%.o,$(CFILES))
+
+all: $(NAME)
+
+# Generate files from source and clean .o files
+$(NAME): $(OFILES)
+	cp $(SRC_DIR)/libft.h $(TEST_LIB_DIR)
+	ar rcs $(TEST_LIB_DIR)/$(NAME) $(OFILES)
+	rm -f $(OFILES)
+
+# For testing
+
+## Test directory
+TEST_DIR=tests/src
+TEST_LIB_DIR=tests/lib
+TEST_BIN_DIR=tests/bin
+
+## Name of the test main executable
+TEST_BIN=main_test.o
+
+## Library Test source
+TEST_SRC=$(wildcard $(TEST_DIR)/*.c)
+
+## Test source apps
+TEST_DIR_APP=tests/src-libft-tests
+TEST_SRC_APP=$(wildcard $(TEST_DIR_APP)/*.c)
+
+# Test: first build source, copy library to test, generate test binary and launch it
+test: all
+#	cp $(NAME) $(TEST_DIR)
+	$(CC) $(CFLAGS) -lbsd $(TEST_SRC) $(TEST_SRC_APP) $(TEST_LIB_DIR)/$(NAME) -o $(TEST_BIN_DIR)/$(TEST_BIN)
+	./$(TEST_BIN_DIR)/$(TEST_BIN)
+
+# clean test directories
+clean:
+	rm $(TEST_LIB_DIR)/*.* $(TEST_DIR)/*.o $(TEST_BIN_DIR)/$(TEST_BIN)
