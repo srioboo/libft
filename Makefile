@@ -6,7 +6,7 @@
 #    By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/30 16:30:18 by srioboo-          #+#    #+#              #
-#    Updated: 2025/01/04 00:24:33 by srioboo-         ###   ########.fr        #
+#    Updated: 2025/01/04 09:12:21 by srioboo-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -91,9 +91,9 @@ re: fclean all
 
 # testing
 test: all
-	$(MAKE) -f tests/Makefile test
+	$(MAKE) -f fun_testlib/Makefile test
 
 ctest:
-	$(MAKE) -f tests/Makefile clean
+	$(MAKE) -f fun_testlib/Makefile clean
 
 .PHONY: all clean fclean re bonus test ctest
