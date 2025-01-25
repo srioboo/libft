@@ -1,4 +1,4 @@
-#include "testlibft.h"
+#include "test.h"
 #include <limits.h>
 
 void	test_ft_itoa(void)

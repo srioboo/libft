@@ -1,4 +1,4 @@
-#include "testlibft.h"
+#include "test.h"
 
 static void	test_ft_memcmp_0(void)
 {

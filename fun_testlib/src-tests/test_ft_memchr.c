@@ -1,4 +1,4 @@
-#include "testlibft.h"
+#include "test.h"
 
 static void	ft_print_test(void *data, int c, size_t size)
 {

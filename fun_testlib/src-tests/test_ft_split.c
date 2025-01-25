@@ -1,4 +1,4 @@
-#include "testlibft.h"
+#include "test.h"
 #include <bsd/string.h>
 
 static void	ft_show_data(int n, char **str_to_test)

@@ -5,6 +5,7 @@ MDIR = mkdir -p
 RM = rm
 
 ## Test library directories
+# uncoment TEST_LIB_ROOT value once in the app 
 TEST_LIB_ROOT = fun_testlib/
 TEST_DIR_SRC = $(TEST_LIB_ROOT)src
 TEST_BIN_DIR = $(TEST_LIB_ROOT)bin
@@ -25,12 +26,21 @@ dirs:
 
 # Test: generate test binary and launch it
 test: dirs
-	$(CC) $(CFLAGS) -lbsd $(TEST_SRC) $(TEST_SRC_APP) $(TESTED_LIBS) -o $(TEST_BIN_DIR)/$(TEST_BIN)
+	$(CC) $(CFLAGS) -I$(TEST_LIB_ROOT)include -lbsd $(TEST_SRC) $(TEST_SRC_APP) $(TESTED_LIBS) -o $(TEST_BIN_DIR)/$(TEST_BIN)
 	./$(TEST_BIN_DIR)/$(TEST_BIN)
 
 # clean test directories
 clean:
 	$(RM) -fr $(TEST_BIN_DIR)
-#	$(RM) $(TEST_DIR_SRC)/*.o
+
+# detect memory leaks
+sane:
+	$(CC) $(CFLAGS) -I$(TEST_LIB_ROOT)include -lbsd $(TEST_SRC) $(TEST_SRC_APP) $(TESTED_LIBS) -o $(TEST_BIN_DIR)/$(TEST_BIN) -fsanitize=address -g
+	./$(TEST_BIN_DIR)/$(TEST_BIN)
+
+val:
+	$(CC) $(CFLAGS) -I$(TEST_LIB_ROOT)include -lbsd $(TEST_SRC) $(TEST_SRC_APP) $(TESTED_LIBS) -o $(TEST_BIN_DIR)/$(TEST_BIN) -fsanitize=address -g
+	valgrind --leak-check=full ./$(TEST_BIN_DIR)/$(TEST_BIN)
+
 
 .PHONY: test clean dirs
