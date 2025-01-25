@@ -6,7 +6,7 @@
 #    By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/30 16:30:18 by srioboo-          #+#    #+#              #
-#    Updated: 2025/01/04 09:12:21 by srioboo-         ###   ########.fr        #
+#    Updated: 2025/01/25 19:12:56 by srioboo-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -96,4 +96,11 @@ test: all
 ctest:
 	$(MAKE) -f fun_testlib/Makefile clean
 
-.PHONY: all clean fclean re bonus test ctest
+# detect memory leaks
+sane:
+	$(MAKE) -f fun_testlib/Makefile sane
+
+val:
+	$(MAKE) -f fun_testlib/Makefile val
+
+.PHONY: all clean fclean re bonus test ctest sane val
