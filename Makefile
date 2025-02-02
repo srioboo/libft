@@ -6,14 +6,14 @@
 #    By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/30 16:30:18 by srioboo-          #+#    #+#              #
-#    Updated: 2025/02/02 19:51:18 by srioboo-         ###   ########.fr        #
+#    Updated: 2025/02/02 19:54:07 by srioboo-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # library name
 NAME = libft.a
 # compliler and compiler flags
-CC = cc
+CC = @cc
 CFLAGS = -Wall -Wextra -Werror
 # auxiliary commands
 AR = @ar rcs
