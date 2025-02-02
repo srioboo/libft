@@ -15,7 +15,7 @@
 # include <limits.h>
 # include <stdarg.h>
 // add libraries of the tested project
-// # include "../../app.h"
+# include "../src/libft.h"
 
 /** Base functions */
 

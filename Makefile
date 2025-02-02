@@ -6,14 +6,14 @@
 #    By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/30 16:30:18 by srioboo-          #+#    #+#              #
-#    Updated: 2025/02/02 19:01:55 by srioboo-         ###   ########.fr        #
+#    Updated: 2025/02/02 19:51:18 by srioboo-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # library name
 NAME = libft.a
 # compliler and compiler flags
-CC = @cc
+CC = cc
 CFLAGS = -Wall -Wextra -Werror
 # auxiliary commands
 AR = @ar rcs
@@ -89,21 +89,12 @@ fclean: clean
 
 re: fclean all
 
-# testing
-# test: all
-# 	$(MAKE) -f fun_testlib/Makefile test
-
-# ctest:
-# 	$(MAKE) -f fun_testlib/Makefile clean
-
-# detect memory leaks
-# sane:
-# 	$(MAKE) -f fun_testlib/Makefile sane
-
-# val:
-# 	$(MAKE) -f fun_testlib/Makefile val
-
 # TEST Section
+INCLUDE = include
+LIB = lib
+# Library name
+LIB_TEST_NAME = libfuntest.a
+
 ## Name of the test main executable
 TEST_BIN = test.out
 
@@ -112,8 +103,8 @@ TEST_SRCS = $(wildcard src-tests/*.c)
 TEST_OBJS = $(TEST_SRCS:.c=.o)
 
 # Test: generate test binary
-test: $(TEST_OBJS)
-	$(CC) $(CFLAGS) -I$(INCLUDE) $(TEST_SRCS) -L$(LIB) -l:$(LIB_NAME) -o $(TEST_BIN)
+test: all
+	$(CC) $(CFLAGS) -Iinclude $(TEST_SRCS) libft.a -L$(LIB) -l:$(LIB_TEST_NAME) -o $(TEST_BIN)
 	./$(TEST_BIN)
 
 # clean test directories
@@ -122,11 +113,11 @@ tclean:
 
 # Memory leaks detection
 sane: all
-	$(CC) $(CFLAGS) -I$(INCLUDE) $(TEST_SRCS) -L$(LIB) -l:$(LIB_NAME) -o $(TEST_BIN) -fsanitize=address -g
+	$(CC) $(CFLAGS) -I$(INCLUDE) $(TEST_SRCS) $(NAME) -L$(LIB) -l:$(LIB_TEST_NAME) -o $(TEST_BIN) -fsanitize=address -g
 	./$(TEST_BIN)
 
 val: all
 	$(CC) $(CFLAGS) -I$(INCLUDE) $(TEST_SRCS) -L$(LIB) -l:$(LIB_NAME) -o $(TEST_BIN)
 	valgrind --leak-check=full ./$(TEST_BIN)
 
-.PHONY: all clean fclean re bonus test ctest sane val
+.PHONY: all clean fclean re bonus test tclean sane val
