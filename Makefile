@@ -6,7 +6,7 @@
 #    By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/30 16:30:18 by srioboo-          #+#    #+#              #
-#    Updated: 2025/02/02 19:54:07 by srioboo-         ###   ########.fr        #
+#    Updated: 2025/02/03 20:30:21 by srioboo-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -90,34 +90,48 @@ fclean: clean
 re: fclean all
 
 # TEST Section
-INCLUDE = include
-LIB = lib
-# Library name
-LIB_TEST_NAME = libfuntest.a
+# INCLUDE = include
+# LIB = lib
+# # Library name
+# LIB_TEST_NAME = libfuntest.a
 
-## Name of the test main executable
-TEST_BIN = test.out
+# ## Name of the test main executable
+# TEST_BIN = test.out
 
-## Library Test source and objects
-TEST_SRCS = $(wildcard src-tests/*.c)
-TEST_OBJS = $(TEST_SRCS:.c=.o)
+# ## Library Test source and objects
+# TEST_SRCS = $(wildcard src-tests/*.c)
+# TEST_OBJS = $(TEST_SRCS:.c=.o)
 
 # Test: generate test binary
-test: all
-	$(CC) $(CFLAGS) -Iinclude $(TEST_SRCS) libft.a -L$(LIB) -l:$(LIB_TEST_NAME) -o $(TEST_BIN)
-	./$(TEST_BIN)
+# test: all
+# 	$(CC) $(CFLAGS) -Iinclude $(TEST_SRCS) libft.a -L$(LIB) -l:$(LIB_TEST_NAME) -o $(TEST_BIN)
+# 	./$(TEST_BIN)
 
-# clean test directories
+# # clean test directories
+# tclean:
+# 	$(RM) $(TEST_OBJS) $(TEST_BIN)
+
+# # Memory leaks detection
+# sane: all
+# 	$(CC) $(CFLAGS) -I$(INCLUDE) $(TEST_SRCS) $(NAME) -L$(LIB) -l:$(LIB_TEST_NAME) -o $(TEST_BIN) -fsanitize=address -g
+# 	./$(TEST_BIN)
+
+# val: all
+# 	$(CC) $(CFLAGS) -I$(INCLUDE) $(TEST_SRCS) -L$(LIB) -l:$(LIB_NAME) -o $(TEST_BIN)
+# 	valgrind --leak-check=full ./$(TEST_BIN)
+
+# TEST Section
+test: all
+	$(MAKE) -f src-tests/Makefile test
+
 tclean:
-	$(RM) $(TEST_OBJS) $(TEST_BIN)
+	$(MAKE) -f src-tests/Makefile tclean
 
 # Memory leaks detection
-sane: all
-	$(CC) $(CFLAGS) -I$(INCLUDE) $(TEST_SRCS) $(NAME) -L$(LIB) -l:$(LIB_TEST_NAME) -o $(TEST_BIN) -fsanitize=address -g
-	./$(TEST_BIN)
+sane:
+	$(MAKE) -f src-tests/Makefile sane
 
-val: all
-	$(CC) $(CFLAGS) -I$(INCLUDE) $(TEST_SRCS) -L$(LIB) -l:$(LIB_NAME) -o $(TEST_BIN)
-	valgrind --leak-check=full ./$(TEST_BIN)
+val: 
+	$(MAKE) -f src-tests/Makefile val
 
 .PHONY: all clean fclean re bonus test tclean sane val

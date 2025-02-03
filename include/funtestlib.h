@@ -4,8 +4,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TESTLIB_H
-# define TESTLIB_H
+#ifndef FUNTESTLIB_H
+# define FUNTESTLIB_H
 
 # include <assert.h>
 # include <stdio.h>
@@ -16,6 +16,12 @@
 # include <stdarg.h>
 // add libraries of the tested project
 # include "../src/libft.h"
+
+/** Constants **/
+# define COLOR_RED "\033[0;31m"
+# define COLOR_GREEN "\033[0;32m"
+# define COLOR_WHITE "\033[0;37m"
+# define COLOR_RESET "\033[0m"
 
 /** Base functions */
 
@@ -58,7 +64,7 @@ char	*fun_method_name(char *text);
  * @details utility to proper
  * @param text the string to free
  * @return the given string to NULL
-*/
+ */
 char	*fun_free_str(char *text);
 
 /** Show data functions */
@@ -70,7 +76,7 @@ char	*fun_free_str(char *text);
  * for visualization purposes
  * @param message string to show data
  * @return nothing
-*/
+ */
 void	fun_show_data(char **message);
 
 /**
@@ -82,7 +88,7 @@ void	fun_show_data(char **message);
  * @param fnew function new to compare agains forig
  * @param message string to show data
  * @return nothing
-*/
+ */
 void	fun_show_orig_new(int (*f1)(const char *),
 			int (*f2)(const char *), const char *message);
 
@@ -95,7 +101,7 @@ void	fun_show_orig_new(int (*f1)(const char *),
  * and print the results
  * @param orig int origin
  * @param new int to test agais origin
-*/
+ */
 void	fun_assert_int(int orig, int new);
 
 /**
@@ -108,7 +114,7 @@ void	fun_assert_int(int orig, int new);
  * @param new funtion to test agais origin
  * @param str string to pass to the funcions
  * @param int integer to pass to the functios
-*/
+ */
 void	fun_assert_int_fun(int (*f_ori)(const char *str, ...),
 			int (*f_new)(const char *str, ...), const char *str, ...);
 
