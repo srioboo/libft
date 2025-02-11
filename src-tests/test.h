@@ -1,8 +1,14 @@
-#ifndef TESTLIBFT_H
-# define TESTLIBFT_H
+/* ************************************************************************** */
+/*   test.h                                                           */
+/* ************************************************************************** */
+
+#ifndef TEST_H
+# define TEST_H
 
 # include "funtestlib.h"
 
+// add here funcions prototipe
+int		test_ft_dummy(int active);
 // libft test functions
 void	test_ft_isalpha(void);
 void	test_ft_isdigit(void);

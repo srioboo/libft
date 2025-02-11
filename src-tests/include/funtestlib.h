@@ -15,7 +15,7 @@
 # include <limits.h>
 # include <stdarg.h>
 // add libraries of the tested project
-# include "../src/libft.h"
+# include "../../src/libft.h"
 
 /** Constants **/
 # define COLOR_RED "\033[0;31m"
