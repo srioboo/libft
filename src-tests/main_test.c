@@ -69,8 +69,8 @@ int	main(int argc, char **argv)
 	if (!argv)
 		printf("%s", argv[0]);
 	test_ft_dummy(1);
-	test_1(1);
-	test_2(1);
-	test_3(1);
+	test_1(0);
+	test_2(0);
+	test_3(0);
 	test_ft_lists();
 }
