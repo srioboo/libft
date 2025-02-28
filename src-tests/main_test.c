@@ -7,7 +7,7 @@
 
 #include "test.h"
 
-static void	test_1(int active)
+static void	test_libft_1(int active)
 {
 	if (active == 1)
 	{
@@ -28,7 +28,7 @@ static void	test_1(int active)
 	}
 }
 
-static void	test_2(int active)
+static void	test_libft_2(int active)
 {
 	if (active == 1)
 	{
@@ -48,7 +48,7 @@ static void	test_2(int active)
 	}
 }
 
-static void	test_3(int active)
+static void	test_libft_3(int active)
 {
 	if (active == 1)
 	{
@@ -69,8 +69,17 @@ int	main(int argc, char **argv)
 	if (!argv)
 		printf("%s", argv[0]);
 	test_ft_dummy(1);
-	test_1(0);
-	test_2(0);
-	test_3(0);
+	fun_start(" LIBFT =============");
+	test_libft_1(0);
+	test_libft_2(0);
+	test_libft_3(0);
+	fun_start(" LIBFT (BONUS) ==========");
 	test_ft_lists();
+	fun_start(" FT_PRINTFT =============");
+	test_ft_printf_char(1);
+	test_ft_printf_numbers(1);
+	test_ft_printf_str(1);
+	test_ft_printf_percent(1);
+	test_ft_printf_hex(1);
+	test_ft_printf_pointers(1);
 }

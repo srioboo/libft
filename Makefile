@@ -6,7 +6,7 @@
 #    By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/30 16:30:18 by srioboo-          #+#    #+#              #
-#    Updated: 2025/02/28 12:29:29 by srioboo-         ###   ########.fr        #
+#    Updated: 2025/02/28 23:48:32 by srioboo-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,9 +66,20 @@ BONUS_SRCS = src/ft_lstadd_back_bonus.c \
 		src/ft_lstnew_bonus.c \
 		src/ft_lstsize_bonus.c
 
+# source files
+PRINTF_SRCS = ft_printf/ft_printf.c \
+		ft_printf/ft_type.c \
+		ft_printf/ft_putchar.c \
+		ft_printf/ft_putstr.c \
+		ft_printf/ft_puthex.c \
+		ft_printf/ft_putnumber.c \
+		ft_printf/ft_putpointer.c \
+		ft_printf/ft_putpercent.c
+
 # objects
 OBJECTS = $(SRCS:.c=.o)
 BONUS_OBJECTS = $(BONUS_SRCS:.c=.o)
+PRINTF_OBJECTS = $(PRINTF_SRCS:.c=.o)
 
 all: $(NAME)
 
@@ -89,39 +100,15 @@ fclean: clean
 
 re: fclean all
 
-# TEST Section
-# INCLUDE = include
-# LIB = lib
-# # Library name
-# LIB_TEST_NAME = libfuntest.a
+# generate full library libft, libft_bonus and ft_printf
+full: $(OBJECTS) $(BONUS_OBJECTS) $(PRINTF_OBJECTS)
+	$(AR) $(NAME) $?
 
-# ## Name of the test main executable
-# TEST_BIN = test.out
-
-# ## Library Test source and objects
-# TEST_SRCS = $(wildcard src-tests/*.c)
-# TEST_OBJS = $(TEST_SRCS:.c=.o)
-
-# Test: generate test binary
-# test: all
-# 	$(CC) $(CFLAGS) -Iinclude $(TEST_SRCS) libft.a -L$(LIB) -l:$(LIB_TEST_NAME) -o $(TEST_BIN)
-# 	./$(TEST_BIN)
-
-# # clean test directories
-# tclean:
-# 	$(RM) $(TEST_OBJS) $(TEST_BIN)
-
-# # Memory leaks detection
-# sane: all
-# 	$(CC) $(CFLAGS) -I$(INCLUDE) $(TEST_SRCS) $(NAME) -L$(LIB) -l:$(LIB_TEST_NAME) -o $(TEST_BIN) -fsanitize=address -g
-# 	./$(TEST_BIN)
-
-# val: all
-# 	$(CC) $(CFLAGS) -I$(INCLUDE) $(TEST_SRCS) -L$(LIB) -l:$(LIB_NAME) -o $(TEST_BIN)
-# 	valgrind --leak-check=full ./$(TEST_BIN)
+full-clean:
+	$(RM) $(OBJECTS) $(BONUS_OBJECTS) $(PRINTF_OBJECTS)
 
 # TEST Section
-test: all
+test: full
 	$(MAKE) -f src-tests/Makefile test
 
 tclean:
@@ -134,4 +121,4 @@ sane:
 val: 
 	$(MAKE) -f src-tests/Makefile val
 
-.PHONY: all clean fclean re bonus test tclean sane val
+.PHONY: all clean fclean re bonus test tclean sane val full full-clean

@@ -52,4 +52,4 @@ Mkfile.old
 dkms.conf
 
 # To upload test library
-!lib/libfuntest.a
+!src-tests/lib/libfuntest.a

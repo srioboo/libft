@@ -52,4 +52,12 @@ void	test_ft_putend_fd(void);
 void	test_ft_putnbr_fd(void);
 void	test_ft_lists(void);
 
+// ft_printf test functions
+void	test_ft_printf_numbers(int active);
+void	test_ft_printf_hex(int active);
+void	test_ft_printf_pointers(int active);
+void	test_ft_printf_char(int active);
+void	test_ft_printf_str(int active);
+void	test_ft_printf_percent(int active);
+
 #endif
