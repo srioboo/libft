@@ -30,7 +30,7 @@ tclean:
 
 # Memory leaks detection
 sane:
-	$(CC) $(CFLAGS) -Iinclude $(TEST_SRCS) $(LIB_TESTED) -L$(LIB) -l:$(LIB_TEST_NAME) -o $(TEST_BIN) -fsanitize=address -g
+	$(CC) $(CFLAGS) -I$(INCLUDE) $(TEST_SRCS) $(LIB_TESTED) -L$(LIB) -l:$(LIB_TEST_NAME) -o $(TEST_BIN) -fsanitize=address -g
 	./$(TEST_BIN)
 
 val:
