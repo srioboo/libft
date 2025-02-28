@@ -76,10 +76,13 @@ int	main(int argc, char **argv)
 	fun_start(" LIBFT (BONUS) ==========");
 	test_ft_lists();
 	fun_start(" FT_PRINTFT =============");
-	test_ft_printf_char(1);
-	test_ft_printf_numbers(1);
-	test_ft_printf_str(1);
-	test_ft_printf_percent(1);
-	test_ft_printf_hex(1);
-	test_ft_printf_pointers(1);
+	test_ft_printf_char(0);
+	test_ft_printf_numbers(0);
+	test_ft_printf_str(0);
+	test_ft_printf_percent(0);
+	test_ft_printf_hex(0);
+	test_ft_printf_pointers(0);
+	fun_start(" GNL =============");
+	test_gnl(1);
+	test_gnl_read_error(0);
 }

@@ -6,7 +6,7 @@
 #    By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/30 16:30:18 by srioboo-          #+#    #+#              #
-#    Updated: 2025/02/28 23:48:32 by srioboo-         ###   ########.fr        #
+#    Updated: 2025/03/01 00:31:23 by srioboo-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,10 +76,15 @@ PRINTF_SRCS = ft_printf/ft_printf.c \
 		ft_printf/ft_putpointer.c \
 		ft_printf/ft_putpercent.c
 
+# source files
+GNL_SRCS = get_next_line/get_next_line.c \
+		get_next_line/get_next_line_utils.c
+
 # objects
 OBJECTS = $(SRCS:.c=.o)
 BONUS_OBJECTS = $(BONUS_SRCS:.c=.o)
 PRINTF_OBJECTS = $(PRINTF_SRCS:.c=.o)
+GNL_OBJECTS = $(GNL_SRCS:.c=.o)
 
 all: $(NAME)
 
@@ -101,11 +106,11 @@ fclean: clean
 re: fclean all
 
 # generate full library libft, libft_bonus and ft_printf
-full: $(OBJECTS) $(BONUS_OBJECTS) $(PRINTF_OBJECTS)
+full: $(OBJECTS) $(BONUS_OBJECTS) $(PRINTF_OBJECTS) $(GNL_OBJECTS)
 	$(AR) $(NAME) $?
 
 full-clean:
-	$(RM) $(OBJECTS) $(BONUS_OBJECTS) $(PRINTF_OBJECTS)
+	$(RM) $(OBJECTS) $(BONUS_OBJECTS) $(PRINTF_OBJECTS) $(GNL_OBJECTS)
 
 # TEST Section
 test: full

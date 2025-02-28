@@ -60,4 +60,8 @@ void	test_ft_printf_char(int active);
 void	test_ft_printf_str(int active);
 void	test_ft_printf_percent(int active);
 
+// get_next_line
+void	test_gnl(int active);
+void	test_gnl_read_error(int active);
+
 #endif

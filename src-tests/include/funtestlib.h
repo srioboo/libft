@@ -14,9 +14,11 @@
 # include <ctype.h>
 # include <limits.h>
 # include <stdarg.h>
+# include <fcntl.h>
 // add libraries of the tested project
 # include "../../src/libft.h"
 # include "../../ft_printf/ft_printf.h"
+# include "../../get_next_line/get_next_line.h"
 
 /** Constants **/
 # define COLOR_RED "\033[0;31m"
