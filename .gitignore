@@ -53,3 +53,7 @@ dkms.conf
 
 # To upload test library
 !src-tests/lib/libfuntest.a
+!.vscode
+
+# Remove main-test
+src-tests/main-test

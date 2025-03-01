@@ -1,0 +1,31 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Build",
+			"command": "/bin/gcc",
+			"type": "cppbuild",
+			"args": [
+				"-fdiagnostics-color=always",
+				"-g",
+				"-Iinclude",
+				"*.c",
+				"../get_next_line/*.c",
+				"../libft.a",
+				"-Llib",
+				"-l:libfuntest.a",
+				"-o",
+				"${fileDirname}/main-test"
+			],
+			"options": {
+				"cwd": "${fileDirname}"
+			},
+			"problemMatcher": ["$gcc"],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"detail": "Task for build the program."
+		}
+	]
+}
