@@ -79,14 +79,14 @@ void test_ft_calloc_2(void)
 void	test_ft_calloc_3(void)
 {
 	fun_test_header_label(3, "orig");
-	int *pointer = (int *)calloc(0, 0);
+	int *pointer = (int *)calloc(4, sizeof(int));
 	if (pointer == NULL)
 		printf("Null pointer \n");
 	else
 		printf("Address = %p", (void*)pointer);
 	free(pointer);
 	fun_test_header_label(3, "new");
-	int *pointer2 = (int *)ft_calloc(0, 0);
+	int *pointer2 = (int *)ft_calloc(4, sizeof(int));
 	if (pointer2 == NULL)
 		printf("Null pointer \n");
 	else
