@@ -6,7 +6,7 @@
 #    By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/31 09:18:47 by srioboo-          #+#    #+#              #
-#    Updated: 2025/02/28 12:29:29 by srioboo-         ###   ########.fr        #
+#    Updated: 2025/05/23 19:44:28 by srioboo-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,8 @@ SRCS = ft_printf.c \
 		ft_puthex.c \
 		ft_putnumber.c \
 		ft_putpointer.c \
-		ft_putpercent.c
+		ft_putpercent.c \
+		ft_debug.c
 # objects
 OBJECTS = $(SRCS:.c=.o)
 

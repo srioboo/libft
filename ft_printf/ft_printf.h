@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/31 08:51:33 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/01/13 15:19:34 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/23 19:49:39 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@
 # include <stdarg.h>
 # include <unistd.h>
 # include <stdlib.h>
+
+# ifndef DEBBUG
+#  define DEBBUG 0
+# endif
 
 /**
  * @brief It prints in console the given parameters formatted
@@ -101,5 +105,18 @@ size_t	ft_putstr(char *str, va_list args);
  * @return the size of the char %
  */
 size_t	ft_putpercent(char *str, char c);
+
+/**
+ * @brief It prints in console the given parameters formatted, only if debug is
+ * set
+ *
+ * @details Prints the given parameters formated into the string given.
+ * It allow print diferent kinds of parameter types. But only is debug is set
+ * and show degug traces
+ * @param s string to print
+ * @param ... several parameters to print
+ * @return the size of the result print
+ */
+int		ft_debug(char const *s, ...);
 
 #endif
